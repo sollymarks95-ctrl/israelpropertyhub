@@ -1,167 +1,109 @@
 {
   "framework": "nextjs",
-  "buildCommand": "npx next build",
-  "outputDirectory": ".next",
   "crons": [
     {
-      "path": "/api/cron-reviews",
-      "schedule": "0 9 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=israel-property-iq&batch=0"
     },
     {
-      "path": "/api/cron-companies",
-      "schedule": "0 6 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=israel-property-iq&batch=1"
     },
     {
-      "path": "/api/cron-site?site=global-trade-wire&batch=0",
-      "schedule": "0 7 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=israel-property-iq&batch=2"
     },
     {
-      "path": "/api/cron-site?site=finance-terminal&batch=0",
-      "schedule": "3 7 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=israel-luxury-homes&batch=0"
     },
     {
-      "path": "/api/cron-site?site=business-pulse&batch=0",
-      "schedule": "6 7 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=israel-luxury-homes&batch=1"
     },
     {
-      "path": "/api/cron-site?site=gold-markets-today&batch=0",
-      "schedule": "9 7 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=israel-luxury-homes&batch=2"
     },
     {
-      "path": "/api/cron-site?site=trust-score&batch=0",
-      "schedule": "12 7 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=israel-prop-invest&batch=0"
     },
     {
-      "path": "/api/cron-site?site=invest-data&batch=0",
-      "schedule": "15 7 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=israel-prop-invest&batch=1"
     },
     {
-      "path": "/api/cron-site?site=market-radar&batch=0",
-      "schedule": "18 7 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=israel-prop-invest&batch=2"
     },
     {
-      "path": "/api/cron-site?site=executive-network&batch=0",
-      "schedule": "21 7 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=tel-aviv-property&batch=0"
     },
     {
-      "path": "/api/cron-site?site=crypto-hub&batch=0",
-      "schedule": "24 7 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=tel-aviv-property&batch=1"
     },
     {
-      "path": "/api/cron-site?site=global-trade-wire&batch=1",
-      "schedule": "0 11 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=tel-aviv-property&batch=2"
     },
     {
-      "path": "/api/cron-site?site=finance-terminal&batch=1",
-      "schedule": "3 11 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=israel-estate-iq&batch=0"
     },
     {
-      "path": "/api/cron-site?site=business-pulse&batch=1",
-      "schedule": "6 11 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=israel-estate-iq&batch=1"
     },
     {
-      "path": "/api/cron-site?site=gold-markets-today&batch=1",
-      "schedule": "9 11 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=israel-estate-iq&batch=2"
     },
     {
-      "path": "/api/cron-site?site=trust-score&batch=1",
-      "schedule": "12 11 * * *"
+      "schedule": "0 7 * * *",
+      "path": "/api/cron-site?site=prop-vexx&batch=0"
     },
     {
-      "path": "/api/cron-site?site=invest-data&batch=1",
-      "schedule": "15 11 * * *"
+      "schedule": "0 12 * * *",
+      "path": "/api/cron-site?site=prop-vexx&batch=1"
     },
     {
-      "path": "/api/cron-site?site=market-radar&batch=1",
-      "schedule": "18 11 * * *"
+      "schedule": "0 17 * * *",
+      "path": "/api/cron-site?site=prop-vexx&batch=2"
     },
     {
-      "path": "/api/cron-site?site=executive-network&batch=1",
-      "schedule": "21 11 * * *"
+      "schedule": "0 1 * * *",
+      "path": "/api/cron-questions?site=israel-property-iq"
     },
     {
-      "path": "/api/cron-site?site=crypto-hub&batch=1",
-      "schedule": "24 11 * * *"
+      "schedule": "0 2 * * *",
+      "path": "/api/cron-questions?site=israel-luxury-homes"
     },
     {
-      "path": "/api/cron-site?site=global-trade-wire&batch=2",
-      "schedule": "0 15 * * *"
+      "schedule": "0 3 * * *",
+      "path": "/api/cron-questions?site=israel-prop-invest"
     },
     {
-      "path": "/api/cron-site?site=finance-terminal&batch=2",
-      "schedule": "3 15 * * *"
+      "schedule": "0 4 * * *",
+      "path": "/api/cron-questions?site=tel-aviv-property"
     },
     {
-      "path": "/api/cron-site?site=business-pulse&batch=2",
-      "schedule": "6 15 * * *"
+      "schedule": "0 5 * * *",
+      "path": "/api/cron-questions?site=israel-estate-iq"
     },
     {
-      "path": "/api/cron-site?site=gold-markets-today&batch=2",
-      "schedule": "9 15 * * *"
+      "schedule": "0 6 * * *",
+      "path": "/api/cron-questions?site=prop-vexx"
     },
     {
-      "path": "/api/cron-site?site=trust-score&batch=2",
-      "schedule": "12 15 * * *"
+      "schedule": "0 0 * * *",
+      "path": "/api/cron-internal-links"
     },
     {
-      "path": "/api/cron-site?site=invest-data&batch=2",
-      "schedule": "15 15 * * *"
-    },
-    {
-      "path": "/api/cron-site?site=market-radar&batch=2",
-      "schedule": "18 15 * * *"
-    },
-    {
-      "path": "/api/cron-site?site=executive-network&batch=2",
-      "schedule": "21 15 * * *"
-    },
-    {
-      "path": "/api/cron-site?site=crypto-hub&batch=2",
-      "schedule": "24 15 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=trust-score",
-      "schedule": "0 1 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=finance-terminal",
-      "schedule": "30 1 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=crypto-hub",
-      "schedule": "0 2 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=market-radar",
-      "schedule": "30 2 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=invest-data",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=gold-markets-today",
-      "schedule": "30 3 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=global-trade-wire",
-      "schedule": "0 4 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=executive-network",
-      "schedule": "30 4 * * *"
-    },
-    {
-      "path": "/api/cron-questions?site=business-pulse",
-      "schedule": "0 5 * * *"
-    },
-    {
-      "path": "/api/cron-internal-links?limit=100",
-      "schedule": "0 0 * * *"
-    },
-    {
-      "path": "/api/cron-backlinks-daily",
-      "schedule": "30 5 * * *"
+      "schedule": "30 5 * * *",
+      "path": "/api/cron-backlinks-daily"
     }
   ]
 }
