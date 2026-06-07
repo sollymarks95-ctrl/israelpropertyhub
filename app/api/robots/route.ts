@@ -1,5 +1,8 @@
 import { NextRequest } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
+
 export const runtime = 'edge'
 
 const DOMAIN_SITEMAPS: Record<string, string> = {

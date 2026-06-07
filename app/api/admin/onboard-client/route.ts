@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
+
 const ALL_PORTALS = [
   { name:'Nexwire', slug:'global-trade-wire', color:'#c0392b' },
   { name:'Finvex', slug:'finance-terminal', color:'#1a73e8' },

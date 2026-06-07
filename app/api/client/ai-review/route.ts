@@ -4,6 +4,9 @@ import { createClient } from '@supabase/supabase-js'
 export const runtime = 'nodejs'
 export const maxDuration = 60
 
+export const dynamic = 'force-dynamic'
+
+
 const OUR_DOMAINS = ['nex-wire.com','finvexx.com','bizplezx.com','aurexhq.com','verivex.co','invexhuby.com','signalixx.com','execvex.com','cryptoxos.com']
 
 function getDomain(url: string) { try { return new URL(url).hostname.replace('www.','') } catch { return url } }

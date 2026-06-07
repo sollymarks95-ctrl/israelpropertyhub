@@ -5,6 +5,9 @@ import { generateArticleImage } from '@/app/api/admin/generate-image/route'
 export const runtime = 'nodejs'
 export const maxDuration = 300
 
+export const dynamic = 'force-dynamic'
+
+
 export async function GET(req: NextRequest) {
   const secret = req.nextUrl.searchParams.get('secret')
   if (secret !== process.env.CRON_SECRET) {

@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 export const runtime = 'nodejs'
 export const maxDuration = 60
 
+export const dynamic = 'force-dynamic'
+
+
 const OUR_PORTALS = [
   'nex-wire.com','finvexx.com','bizplezx.com','aurexhq.com','verivex.co',
   'invexhuby.com','signalixx.com','execvex.com','cryptoxos.com',

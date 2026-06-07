@@ -3,6 +3,9 @@ import { NextRequest, NextResponse } from 'next/server'
 export const runtime = 'nodejs'
 export const maxDuration = 300
 
+export const dynamic = 'force-dynamic'
+
+
 // Runs all 5 batches for ExecVex + CryptoXos daily at 08:00 UTC
 // Piggybacked onto 1 cron slot since we're at Pro plan limit (40 jobs)
 export async function GET(req: NextRequest) {

@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
+
 const ALPHA_VANTAGE = process.env.ALPHA_VANTAGE_KEY!
 const NEWSAPI = process.env.NEWSAPI_KEY!
 

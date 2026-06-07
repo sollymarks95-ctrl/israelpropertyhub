@@ -4,9 +4,12 @@ import { createClient } from '@supabase/supabase-js'
 
 export const maxDuration = 300
 
-const supabase = createClient(
+export const dynamic = 'force-dynamic'
+
+
+const getDb = () => createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-  process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+  process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 )
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY || '' })
 
@@ -67,7 +70,7 @@ export async function GET(req: NextRequest) {
   const batch = parseInt(searchParams.get('batch') || '0')
 
   // Get site(s)
-  const query = supabase.from('news_sites').select('*').eq('is_live', true)
+  const query = getDb().from('news_sites').select('*').eq('is_live', true)
   if (siteSlug) query.eq('slug', siteSlug)
   const { data: sites } = await query
 
@@ -114,7 +117,7 @@ Return ONLY valid JSON, no markdown backticks.`
         const datePrefix = new Date().toISOString().split('T')[0]
         const slug = `${datePrefix}-${slugify(article.title)}`
 
-        const { error } = await supabase.from('news_articles').upsert({
+        const { error } = await getDb().from('news_articles').upsert({
           news_site_id: site.id,
           title: article.title,
           slug,

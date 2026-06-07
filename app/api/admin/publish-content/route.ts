@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
+
+
 const ROUTE_MAP: Record<string,string> = {
   'global-trade-wire':'news','finance-terminal':'finance','gold-markets-today':'commodities',
   'business-pulse':'magazine','trust-score':'reviews-hub','company-pedia':'wiki',

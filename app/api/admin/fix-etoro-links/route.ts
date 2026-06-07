@@ -4,6 +4,9 @@ import { createClient } from '@supabase/supabase-js'
 export const runtime = 'nodejs'
 export const maxDuration = 60
 
+export const dynamic = 'force-dynamic'
+
+
 const ETORO_LINK = '<a href="https://etoro.com" rel="noopener noreferrer" target="_blank">eToro</a>'
 const ETORO_REGEX = /eToro(?![^<]*<\/a>)/  // first eToro not already in <a> tag
 

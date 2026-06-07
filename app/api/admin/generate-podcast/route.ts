@@ -5,6 +5,9 @@ import { getSiteConfig, pickPortalGuestVoice, SITE_PODCAST_CONFIG as PODCAST_CFG
 export const runtime = 'nodejs'
 export const maxDuration = 300
 
+export const dynamic = 'force-dynamic'
+
+
 const CORS = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Allow-Methods': 'POST,OPTIONS' }
 
 export async function OPTIONS() {

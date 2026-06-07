@@ -4,6 +4,9 @@ import { supabase } from '@/lib/supabase'
 export const runtime = 'nodejs'
 export const maxDuration = 120
 
+export const dynamic = 'force-dynamic'
+
+
 async function getSearchApiKey(): Promise<string> {
   // 1. Check env var first (fastest)
   if (process.env.SEARCHAPI_KEY) return process.env.SEARCHAPI_KEY

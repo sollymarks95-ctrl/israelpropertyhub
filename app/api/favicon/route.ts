@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
+
 const FAVICONS: Record<string, { svg: string; color: string }> = {
   'nex-wire.com':  { color:'#E03131', svg:'<text x="32" y="46" font-family="Arial Black" font-weight="900" font-size="38" fill="white" text-anchor="middle" letter-spacing="-2">N</text>' },
   'finvexx.com':   { color:'#1565C0', svg:'<text x="32" y="46" font-family="Arial Black" font-weight="900" font-size="30" fill="white" text-anchor="middle" letter-spacing="-1">FX</text>' },

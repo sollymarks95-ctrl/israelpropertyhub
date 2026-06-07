@@ -4,6 +4,9 @@ import { supabase } from '@/lib/supabase'
 export const runtime = 'nodejs'
 export const maxDuration = 300
 
+export const dynamic = 'force-dynamic'
+
+
 // One-time seeder: fills all 12 sites with 40 historical articles each
 export async function POST(req: NextRequest) {
   const { data: sites } = await supabase.from('news_sites').select('*').eq('is_live', true)

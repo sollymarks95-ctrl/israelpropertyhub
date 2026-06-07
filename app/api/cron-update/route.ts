@@ -17,6 +17,9 @@ const PORTAL_AUTHORS: Record<string, string[]> = {
 export const runtime = 'nodejs'
 export const maxDuration = 300
 
+export const dynamic = 'force-dynamic'
+
+
 const ANTHROPIC = process.env.ANTHROPIC_API_KEY!
 
 // Service role key bypasses RLS

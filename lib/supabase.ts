@@ -1,16 +1,23 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://wyvaqlmlpiullcgvdvay.supabase.co'
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder'
+const SUPABASE_URL = 'https://wyvaqlmlpiullcgvdvay.supabase.co'
+const ANON_KEY_PLACEHOLDER = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.placeholder'
 
-// Lazy client — safe during build time when env vars may not be available
-let _supabase: ReturnType<typeof createClient> | null = null
-export const getSupabase = () => {
-  if (!_supabase) {
-    _supabase = createClient(supabaseUrl, supabaseAnonKey)
-  }
-  return _supabase
+export function getSupabase() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ANON_KEY_PLACEHOLDER
+  )
 }
+
+export function getSupabaseAdmin() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ANON_KEY_PLACEHOLDER
+  )
+}
+
+// For backwards compatibility — lazy singleton
 export const supabase = getSupabase()
 
 export type Site = {
