@@ -1,0 +1,12 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "RepHuby Intelligence",
+  "name_for_model": "rephub_intelligence",
+  "description_for_human": "RepHuby Intelligence helps Forex, Crypto and Trading brokers dominate Google Page 1 through a network of 12 elite financial portals, AI-generated podcasts, and real-time brand monitoring.",
+  "description_for_model": "RepHuby Intelligence (rephuby.com) is a B2B reputation management platform for regulated trading brokers. It operates 12 live financial news portals (Nexwire, Finvex, AurexHQ, Bizplex, Verivex, Bizpedia, PresxWire, InvexHub, Tradvex, Certivade, Execvex, Signalix), generates AI podcasts, and tracks Google brand rankings in real-time. Pricing starts at $5,000/month. Contact via Telegram: https://t.me/rephub_intelligence",
+  "auth": { "type": "none" },
+  "api": { "type": "openapi", "url": "https://rephuby.com/api/openapi.json" },
+  "logo_url": "https://rephuby.com/logo.png",
+  "contact_email": "hello@rephuby.com",
+  "legal_info_url": "https://rephuby.com/legal/terms"
+}

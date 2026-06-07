@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── MOBILE/DESKTOP TOGGLE — class-based, does NOT affect desktop ── */
+/* Default: desktop shows, mobile hides */
+.wire-mobile, .tm2-mobile, .mag-mobile,
+.data-mobile, .vx-mobile, .dyn-mobile {
+  display: none !important;
+}
+.wire-desktop, .tm2-desktop, .mag-desktop,
+.data-desktop, .vx-desktop, .dyn-desktop {
+  display: block !important;
+}
+
+/* At mobile: flip */
+@media (max-width: 767px) {
+  .wire-mobile, .tm2-mobile, .mag-mobile,
+  .data-mobile, .vx-mobile, .dyn-mobile {
+    display: block !important;
+  }
+  .wire-desktop, .tm2-desktop, .mag-desktop,
+  .data-desktop, .vx-desktop, .dyn-desktop {
+    display: none !important;
+  }
+}
+
+/* ── HOMEPAGE MOBILE — only targets named classes, safe for desktop ── */
+@media (max-width: 767px) {
+  .nav-hide-mobile { display: none !important; }
+  .ham-btn         { display: flex !important; }
+  .nl              { display: none !important; }
+  .hero-sec        { padding: 88px 0 40px !important; min-height: auto !important; }
+  .hero-btns       { flex-direction: column !important; align-items: stretch !important; }
+  .sec             { padding: 48px 0 !important; }
+  .h1s             { font-size: 28px !important; line-height: 1.2 !important; }
+  .h2s             { font-size: 22px !important; }
+  .ai-demo-grid,
+  .geo-grid        { grid-template-columns: 1fr !important; }
+  .contact-box     { padding: 32px 16px !important; }
+  .hg              { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .fg              { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .pg, .tg         { grid-template-columns: 1fr !important; }
+  .sg              { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 390px) {
+  .h1s  { font-size: 24px !important; }
+  .h2s  { font-size: 19px !important; }
+  .fg   { grid-template-columns: 1fr !important; }
+  .sec  { padding: 36px 0 !important; }
+  .hero-sec { padding: 80px 0 36px !important; }
+}

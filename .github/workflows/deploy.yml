@@ -1,0 +1,25 @@
+name: Deploy to Vercel
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy via Vercel Hook with SHA
+        run: |
+          SHA="${{ github.sha }}"
+          echo "Deploying commit: $SHA"
+          RESULT=$(curl -s -f -X POST \
+            "https://api.vercel.com/v1/integrations/deploy/prj_Kziy22RlbG1OFUJkWAA8SC3Gn9U5/08k6QXAegy" \
+            -H "Content-Type: application/json" \
+            -d "{\"ref\":\"$SHA\"}")
+          echo "Vercel response: $RESULT"
+          if echo "$RESULT" | grep -q '"error"'; then
+            echo "❌ Deploy hook failed"
+            exit 1
+          fi
+          echo "✅ Deploy triggered for $SHA"

@@ -1,0 +1,37 @@
+/* ── REPHUBY GLOBAL MOBILE STYLES ──
+   Mobile-first: desktop class shown by default, mobile class hidden.
+   At <768px: flip them. */
+
+/* Default: show desktop, hide mobile */
+.wire-mobile,.tm2-mobile,.mag-mobile,.data-mobile,.vx-mobile,.dyn-mobile { display: none !important; }
+.wire-desktop,.tm2-desktop,.mag-desktop,.data-desktop,.vx-desktop,.dyn-desktop { display: block !important; }
+
+/* At mobile: show mobile, hide desktop */
+@media (max-width: 767px) {
+  .wire-mobile,.tm2-mobile,.mag-mobile,.data-mobile,.vx-mobile,.dyn-mobile { display: block !important; }
+  .wire-desktop,.tm2-desktop,.mag-desktop,.data-desktop,.vx-desktop,.dyn-desktop { display: none !important; }
+}
+
+/* Homepage mobile fixes */
+@media (max-width: 767px) {
+  .nav-hide-mobile { display: none !important; }
+  .hero-sec { padding: 88px 0 40px !important; min-height: auto !important; }
+  .hero-btns { flex-direction: column !important; align-items: stretch !important; }
+  .hero-btns a { justify-content: center !important; text-align: center !important; }
+  .sec { padding: 48px 0 !important; }
+  .h1s { font-size: 28px !important; line-height: 1.2 !important; }
+  .h2s { font-size: 22px !important; line-height: 1.25 !important; }
+  .ai-demo-grid,.geo-grid { grid-template-columns: 1fr !important; }
+  .contact-box { padding: 32px 16px !important; }
+}
+
+@media (max-width: 390px) {
+  .h1s { font-size: 24px !important; }
+  .h2s { font-size: 19px !important; }
+  .hero-sec { padding: 80px 0 36px !important; }
+  .sec { padding: 36px 0 !important; }
+}
+
+/* Prevent horizontal scroll everywhere */
+body { overflow-x: hidden; }
+img { max-width: 100%; }

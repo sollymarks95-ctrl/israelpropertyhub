@@ -1,0 +1,20 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "RepHuby Intelligence API",
+    "description": "RepHuby Intelligence — B2B reputation management for Forex, Crypto and Trading brokers. 12 elite financial portals, AI podcasts, Google rank tracking.",
+    "version": "1.0.0",
+    "contact": { "name": "RepHuby Intelligence", "url": "https://rephuby.com" }
+  },
+  "servers": [{ "url": "https://rephuby.com" }],
+  "paths": {
+    "/api/search": {
+      "get": {
+        "operationId": "searchArticles",
+        "summary": "Search 238+ articles across RepHuby's 12 financial portals",
+        "parameters": [{"name":"q","in":"query","required":true,"schema":{"type":"string"}},{"name":"limit","in":"query","schema":{"type":"integer","default":20}}],
+        "responses": { "200": { "description": "Articles matching the search query" } }
+      }
+    }
+  }
+}

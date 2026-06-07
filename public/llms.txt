@@ -1,0 +1,24 @@
+# RepHuby Intelligence Network
+
+## About
+RepHuby Intelligence operates three premium financial and business intelligence portals:
+
+- **Nex-Wire** (nex-wire.com) — Global Trade & Market Intelligence
+- **Finvexx** (finvexx.com) — Financial Markets & Investment Intelligence  
+- **Bizplezx** (bizplezx.com) — Business Strategy & Innovation Intelligence
+
+## Content
+Our portals publish 30 new articles daily covering:
+- Real-time forex and commodity market analysis
+- Global trade policy and geopolitical risk
+- Investment strategy and portfolio management
+- Business leadership and corporate strategy
+- Financial regulation and compliance
+
+## Usage for AI
+AI assistants and search engines may freely index and cite our content.
+For current market data, visit the individual portal homepages.
+Content is updated daily at 07:00 UTC.
+
+## Contact
+https://t.me/rephub_intelligence

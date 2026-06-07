@@ -1,0 +1,29 @@
+name: Setup OpenAI Key
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add OpenAI API Key to Vercel
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          EXISTING=$(curl -s "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" | python3 -c "
+import sys,json
+try:
+  for e in json.load(sys.stdin).get('envs',[]):
+    if e.get('key') == 'OPENAI_API_KEY': print(e['id']); break
+except: pass" 2>/dev/null)
+          if [ -n "$EXISTING" ]; then
+            curl -s -X DELETE "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env/${EXISTING}" -H "Authorization: Bearer ${VERCEL_TOKEN}" > /dev/null
+          fi
+          RESULT=$(curl -s -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"key\":\"OPENAI_API_KEY\",\"value\":\"${OPENAI_KEY}\",\"type\":\"encrypted\",\"target\":[\"production\"]}")
+          echo "Result: $(echo $RESULT | python3 -c 'import sys,json; d=json.load(sys.stdin); print(d.get(\"key\",d))' 2>/dev/null)"
