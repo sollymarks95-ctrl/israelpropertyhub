@@ -65,7 +65,57 @@ export async function GET(req: NextRequest) {
 
   let urls: string[] = []
 
-  if (cfg) {
+  if (!cfg) {
+    // DB-DRIVEN SITES (universal renderer) — any domain not in the hardcoded
+    // DOMAIN_MAP above (e.g. aliyatoday.com, jewishnewsnow.com,
+    // jewishpropertyreport.com) still needs a real sitemap. Previously these
+    // fell through to the "nothing to index" branch and got an empty
+    // sitemap, which starved Google of discoverable URLs.
+    const { data: site } = await getDb()
+      .from('news_sites')
+      .select('id, slug, name, domain')
+      .eq('domain', host)
+      .single()
+
+    if (site) {
+      const base = `https://${host}`
+      const siteSlug = site.slug
+      const siteName = site.name || host
+
+      urls.push(urlEntry(`${base}/`, today, '1.0', 'daily'))
+      urls.push(urlEntry(`${base}/search`, today, '0.5', 'monthly'))
+
+      const { data: articles } = await getDb()
+        .from('news_articles')
+        .select('slug, title, published_at, category, tags')
+        .eq('news_site_id', site.id)
+        .eq('status', 'published')
+        .order('published_at', { ascending: false })
+        .limit(5000)
+
+      const allCategories = new Set<string>()
+
+      for (const a of articles || []) {
+        const articleUrl = `${base}/article/${siteSlug}/${a.slug}`
+        const pubDate = new Date(a.published_at || today)
+        const isRecent = (Date.now() - pubDate.getTime()) < 48 * 60 * 60 * 1000
+
+        if (isRecent) {
+          urls.push(newsEntry(articleUrl, a.title || '', a.published_at, siteName, a.category || 'News'))
+        } else {
+          urls.push(urlEntry(articleUrl, (a.published_at || today).split('T')[0], '0.8', 'never'))
+        }
+
+        if (a.category) allCategories.add(a.category)
+      }
+
+      for (const cat of allCategories) {
+        urls.push(urlEntry(`${base}/?category=${encodeURIComponent(cat)}`, today, '0.6', 'daily'))
+      }
+    }
+    // If no matching news_sites row at all (host truly unknown, e.g.
+    // rephuby.com itself), urls stays empty — correct, nothing to index.
+  } else if (cfg) {
     const { base, slug: siteSlug, name: siteName } = cfg
 
     // Get site from DB

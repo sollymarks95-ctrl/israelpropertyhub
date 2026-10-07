@@ -32,7 +32,11 @@ export async function generateMetadata({ params }: { params: Promise<{ site: str
     'crypto-hub':         'https://cryptoxos.com',
     'global-trade-assoc': 'https://certivade.com',
   }
-  const BASE = domainMap[siteSlug] || 'https://rephuby.com'
+  // Fall back to the site's own `domain` column (set for DB-driven/universal
+  // sites like aliyatoday.com, jewishnewsnow.com, jewishpropertyreport.com)
+  // instead of rephuby.com — a wrong canonical was pointing Google at a
+  // domain that doesn't serve these pages, which kept them out of the index.
+  const BASE = domainMap[siteSlug] || (site?.domain ? `https://${site.domain}` : 'https://rephuby.com')
   const canonicalUrl = `${BASE}/article/${siteSlug}/${slug}`
   const isNoindex = site?.noindex ?? false
   // Extract brand mentions for keyword enrichment
@@ -204,7 +208,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ site: 
     'executive-network': 'https://execvex.com',
     'crypto-hub':        'https://cryptoxos.com',
   }
-  const BASE = DOMAIN_MAP[siteSlug] || 'https://rephuby.com'
+  const BASE = DOMAIN_MAP[siteSlug] || (site?.domain ? `https://${site.domain}` : 'https://rephuby.com')
   const canonicalUrl = `${BASE}/article/${siteSlug}/${slug}`
 
   // Auto-detect client brand mentions — dynamic from portal_clients

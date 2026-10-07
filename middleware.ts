@@ -43,7 +43,14 @@ export default function middleware(request: NextRequest) {
     if (pathname === '/' || pathname === '') {
       const url = request.nextUrl.clone()
       url.pathname = '/s'
-      return NextResponse.rewrite(url)
+      const res = NextResponse.rewrite(url)
+      // These sites ARE real custom domains (aliyatoday.com, jewishnewsnow.com,
+      // jewishpropertyreport.com, etc.) — without this header, article pages
+      // build internal "Home"/nav links as /news/<slug> instead of "/", and
+      // those paths 404 on this domain, which is what Search Console was
+      // flagging as "Not found (404)" / "Blocked due to other 4xx issue".
+      res.headers.set('x-custom-domain', 'true')
+      return res
     }
     // /robots.txt for unknown domains
     if (pathname === '/robots.txt') {
@@ -51,13 +58,18 @@ export default function middleware(request: NextRequest) {
       url.pathname = '/api/robots'
       return NextResponse.rewrite(url)
     }
-    // /sitemap.xml for unknown domains  
+    // /sitemap.xml for unknown domains
     if (pathname === '/sitemap.xml') {
       const url = request.nextUrl.clone()
       url.pathname = '/api/sitemap'
       return NextResponse.rewrite(url)
     }
-    return NextResponse.next()
+    // Everything else (article pages, etc.) passes through unchanged, but
+    // still needs the custom-domain signal so those pages' own internal
+    // links point back to "/" rather than a hardcoded /news/<slug> path.
+    const res = NextResponse.next()
+    res.headers.set('x-custom-domain', 'true')
+    return res
   }
 
   // Always pass through these paths
